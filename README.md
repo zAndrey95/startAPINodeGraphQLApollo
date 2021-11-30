@@ -1,2 +1,2 @@
-# startAPINodeGraphQLApollo
-Start project to Node.js, Apollo, GraphQL, Sequelize, Postgres
+# Starter Kit to API with Node.js, GraphQL, Apollo Server, Sequelize and Postgres
+
