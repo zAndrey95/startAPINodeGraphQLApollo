@@ -3,8 +3,14 @@ import { Sequelize } from 'sequelize';
 import fs from 'fs';
 import path from 'path';
 
+import Test from './models/Test';
+
 const basename = path.basename(__filename);
-const models: any = []
+const models: any = [
+    Test,
+]
+
+// const models: any = [];
 
 const sequelize = new Sequelize(process.env.POSTGRES_DB, process.env.POSTGRES_USER, process.env.POSTGRES_PASSWORD, {
     host: process.env.POSTGRES_HOST,
@@ -21,17 +27,17 @@ const sequelize = new Sequelize(process.env.POSTGRES_DB, process.env.POSTGRES_US
     },
 });
 
-fs
-  .readdirSync("./src/db/models")
-  .filter(file => (
-      file.indexOf('.') !== 0) 
-      && (file !== basename) 
-      && (file.slice(-3) === '.ts')
-      )
-  .map((file, i) => {
-      let obj = require(path.join(__dirname, '/models', file))
-      models[i] = obj.default
-    })
+// fs
+//   .readdirSync("./src/db/models")
+//   .filter(file => (
+//       file.indexOf('.') !== 0) 
+//       && (file !== basename) 
+//       && (file.slice(-3) === '.ts')
+//       )
+//   .map((file, i) => {
+//       let obj = require('./models/' + file)
+//       models[i] = obj.default
+//     })
 
 let db: any = {};
 

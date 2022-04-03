@@ -6,10 +6,10 @@ module.exports = {
   entry: './src/index.ts',
   target:'node',
   externals: [nodeExternals(),{ knex: 'commonjs knex' }],
-  output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'server.js'
-  },
+  // output: {
+  //   path: path.resolve(__dirname, 'build'),
+  //   filename: 'server.js'
+  // },
   resolve: {
     extensions: [ ".mjs",'.js', '.ts','.(graphql|gql)'],
     modules: [

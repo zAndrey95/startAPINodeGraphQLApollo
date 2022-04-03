@@ -3,10 +3,11 @@
   "description": "Starter Kit to API with Node.js, GraphQL, Apollo Server, Sequelize and Postgres",
   "repository": "https://github.com/zAndrey95/startAPINodeGraphQLApollo.git",
   "author": "zAndrey95 <35850949+zAndrey95@users.noreply.github.com>",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/validator": "^13.7.2",
     "apollo-server-express": "^2.20.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -28,15 +29,10 @@
     "web3": "^1.6.0"
   },
   "scripts": {
-    "start": "node ./build/server.js",
-    "start:prod": "yarn build && yarn run pm2:stop && yarn run pm2:start",
-    "build": "tsc -p . && webpack --config webpack.config.js && ncp src/schema build/schema",
-    "start:dev": "npm run build:dev",
-    "build:dev": "nodemon ./src/index.ts --exec 'ts-node' ./src/index.ts -e ts,graphql",
-    "dev": "concurrently \" nodemon ./build/server.js \" \" webpack --watch --config webpack.config.js\" ",
-    "lint": "eslint . --ext .ts",
-    "pm2:start": "pm2 start ./build/server.js --log-date-format 'DD-MM HH:mm:ss.SSS' --name app --max-restarts 5",
-    "pm2:stop": "pm2 delete -s app || :"
+    "start": "node ./dist/index.js",
+    "build": "tsc -p . && webpack --config webpack.config.js && ncp src/schema dist/schema",
+    "start:dev": "nodemon ./src/index.ts --exec 'ts-node' ./src/index.ts -e ts,graphql",
+    "lint": "eslint . --ext .ts"
   },
   "eslintConfig": {
     "extends": "node",
